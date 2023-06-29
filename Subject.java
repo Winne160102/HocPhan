@@ -15,8 +15,8 @@ public class Subject {
     private String id;
     private String name;
     private int credit;
-    private String studentLimit;
-    private String studentMinimum;
+    private int studentLimit;
+    private int studentMinimum;
 
     //constructor
     public Subject() {
@@ -24,7 +24,7 @@ public class Subject {
     }
     
     //constructor all attributes
-    public Subject(String id, String name, int credit, String studentLimit, String studentMinimum) {
+    public Subject(String id, String name, int credit, int studentLimit, int studentMinimum) {
         this.id = id;
         this.name = name;
         this.credit = credit;
@@ -57,24 +57,24 @@ public class Subject {
         this.credit = credit;
     }
 
-    public String getStudentLimit() {
+    public int getStudentLimit() {
         return studentLimit;
     }
 
-    public void setStudentLimit(String studentLimit) {
+    public void setStudentLimit(int studentLimit) {
         this.studentLimit = studentLimit;
     }
 
-    public String getStudentMinimum() {
+    public int getStudentMinimum() {
         return studentMinimum;
     }
 
-    public void setStudentMinimum(String studentMinimum) {
+    public void setStudentMinimum(int studentMinimum) {
         this.studentMinimum = studentMinimum;
     }
 
     //set all attributes 
-    public void setall(String id, String name, int credit, String studentLimit, String studentMinimum) {
+    public void setall(String id, String name, int credit, int studentLimit, int studentMinimum) {
         this.id = id;
         this.name = name;
         this.credit = credit;
@@ -93,18 +93,28 @@ public class Subject {
 
         System.out.print("Enter Credit: ");
         credit = scanner.nextInt();
+        
         while (credit <= 0) {
-            System.out.println("Invalid input! Please enter a positive value for credit:");
-            credit = scanner.nextInt();
+            System.out.println("Invalid input! Please enter a positive value for credit: ");
+            credit = new Scanner(System.in).nextInt();
+        }
+        
+        System.out.print("Enter Student Limit: ");
+        studentLimit = new Scanner(System.in).nextInt();
+        
+        while (studentLimit <= 0) {
+            System.out.println("Invalid input! Please enter a positive value for Student Limit: ");
+            studentLimit = new Scanner(System.in).nextInt();
         }
 
-        scanner.nextLine();
-
-        System.out.print("Enter Student Limit: ");
-        studentLimit = scanner.nextLine();
-
         System.out.print("Enter Student Minimum: ");
-        studentMinimum = scanner.nextLine();
+        studentMinimum = new Scanner(System.in).nextInt();
+        
+        while (studentMinimum <= 0) {
+            System.out.println("Invalid input! Please enter a positive value for Student Minimum: ");
+            studentMinimum = new Scanner(System.in).nextInt();
+        }
+
     }
     //input file
     public void inputFile(ArrayList<Subject> list) { //inputFile sẽ nhận danh sách các đối tượng Subject
@@ -115,7 +125,7 @@ public class Subject {
                 String line = bufferedReader.readLine(); // tạo 1 biến line, readline là để đọc 1 dòng của file và lưu nó vào biến line
                 if(line == "" || line == null) break; // nếu biến line là rỗng hoặc null thì sẽ thoát vòng lặp
                 String[] temp = line.split(";");//tạo mảng String[] temp, nếu biến line không phải rỗng hoặc null thì sẽ thực hiện tiếp câu lệnh split là phân tách và sẽ lưu các phần tử sau khi tách vào biến temp
-                Subject data = new Subject(temp[0], temp[1], Integer.parseInt(temp[2]), temp[3], temp[4]); // tạo đối tượng Subject mới bằng một biến data và truyền vào đó là các phần tử temp sau khi phân tách vào constructor của Subject
+                Subject data = new Subject(temp[0], temp[1], Integer.parseInt(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4])); // tạo đối tượng Subject mới bằng một biến data và truyền vào đó là các phần tử temp sau khi phân tách vào constructor của Subject
                 list.add(data);// sau đó thêm data vào list bằng câu lệnh add
             }
             bufferedReader.close(); // đóng
