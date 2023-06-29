@@ -82,7 +82,7 @@ public class Subject {
         this.studentMinimum = studentMinimum;
     }
     
-    //input 
+    //input Môn học 
     public void inputSubject() { 
     	Scanner scanner = new Scanner(System.in);
         System.out.print("Enter ID: ");
