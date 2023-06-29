@@ -12,11 +12,11 @@ import org.omg.DynamicAny.DynAnyFactoryHelper;
 
 public class Subject {
 	//attributes
-    private String id;
-    private String name;
-    private int credit;
-    private int studentLimit;
-    private int studentMinimum;
+    private String id; //id môn học
+    private String name; //tên môn học
+    private int credit; //số tín chỉ
+    private int studentLimit; //số sinh viên tối đa
+    private int studentMinimum; //số sinh viên tối thiểu
 
     //constructor
     public Subject() {
